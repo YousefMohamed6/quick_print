@@ -31,4 +31,8 @@ enum PrinterDeviceType {
   /// Mobile device printer (iOS, Android).
   /// Uses the platform's default printing mechanism.
   mobile,
+
+  /// wifi printer connection.
+  /// Uses the platform's default printing mechanism.
+  wifi,
 }

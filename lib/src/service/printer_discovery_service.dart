@@ -8,6 +8,7 @@ import 'package:quick_print/src/models/printer_model/bluetooth_printer_model.dar
 import 'package:quick_print/src/models/printer_model/decktop_printer_model.dart';
 import 'package:quick_print/src/models/printer_model/i_printer_model.dart';
 import 'package:quick_print/src/models/printer_model/use_printer_model.dart';
+import 'package:quick_print/src/models/printer_model/wifi_printer_model.dart';
 import 'package:win_ble/win_ble.dart';
 import 'package:win_ble/win_file.dart';
 
@@ -54,6 +55,7 @@ class PrinterDiscoveryService {
     _printerDevicesList.clear();
     discoverBluetoothDevices();
     discoverBleDevices();
+    discoverWifiDevices();
     await Future.delayed(timeout, discoverUsbDevices);
     await discoverDesktopDevices();
   }
@@ -108,6 +110,29 @@ class PrinterDiscoveryService {
     }
     return bleDevices;
   }
+
+  // Discovers Wifi devices on Android and iOS platforms.
+  ///
+  /// This method is used internally by the service to discover Wifi devices on Android and iOS platforms.
+  List<WifiPrinterModel> discoverWifiDevices() {
+  final wifiDevices = <WifiPrinterModel>[];
+  if (Platform.isAndroid || Platform.isIOS) {
+    _streamSubscription = PrinterManager.instance
+        .discovery(type: PrinterType.network)
+        .listen(
+          (device) {
+            final model = WifiPrinterModel(
+              name: device.name,
+              ip: device.address ?? '',
+            );
+            wifiDevices.add(model);
+            _addDevice(model);
+          },
+          onError: (e) => throw Exception('Error during Wi-Fi discovery: $e'),
+        );
+  }
+  return wifiDevices;
+}
 
   /// Discovers USB devices on all platforms.
   ///

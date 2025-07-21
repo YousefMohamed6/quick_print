@@ -35,8 +35,11 @@
 ///   paperSize: PaperSize.a4,
 /// );
 /// ```
-library quick_print;
+library;
 
+export 'src/enums/paper_size.dart';
 export 'src/enums/printer_device_type.dart';
+export 'src/models/printer_model/wifi_printer_model.dart';
 export 'src/quick_print_base.dart';
 export 'src/service/printer_discovery_service.dart';
+

@@ -5,6 +5,7 @@ import 'package:quick_print/src/printers/interfaces/i_printer.dart';
 import 'package:quick_print/src/printers/mobile_printer.dart';
 import 'package:quick_print/src/printers/sunmi_printer.dart';
 import 'package:quick_print/src/printers/use_printer.dart';
+import 'package:quick_print/src/printers/wifi_printer.dart.dart';
 
 /// PrinterDeviceFactory.dart
 
@@ -30,6 +31,8 @@ class PrinterDeviceFactory {
         return DesktopPrinter();
       case PrinterDeviceType.mobile:
         return MobilePrinter();
+      case PrinterDeviceType.wifi:
+        return WifiPrinter();
     }
   }
 }
