@@ -6,8 +6,6 @@ import 'package:quick_print/src/enums/paper_size.dart';
 import 'package:quick_print/src/exceptions/printer_exception.dart';
 import 'package:quick_print/src/models/printer_model/i_printer_model.dart';
 import 'package:quick_print/src/printers/interfaces/i_printer.dart';
-import 'package:sunmi_printer_plus/core/enums/enums.dart';
-import 'package:sunmi_printer_plus/core/sunmi/sunmi_printer.dart';
 
 /// Printer implementation for Sunmi Android devices.
 class SunmiDevicePrinter with IPrinterMixin implements IPrinter {
@@ -48,6 +46,6 @@ class SunmiDevicePrinter with IPrinterMixin implements IPrinter {
         'Sunmi printer is only supported on Sunmi devices',
       );
     }
-    await SunmiPrinter.printImage(bytes, align: SunmiPrintAlign.CENTER);
+    await SunmiDevicePrinter().printImage(bytes: bytes);
   }
 }
