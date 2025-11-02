@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.2 (2025-11-02)
+
+### Added
+- Top-level exports for public API in `lib/quick_print.dart` so consumers can import models, printers, services and exceptions directly from `package:quick_print/quick_print.dart` (for example `BluetoothPrinterModel`).
+
+### Changed
+- Bumped package version to `1.0.2` in `pubspec.yaml`.
+- Reorganized exports in `lib/quick_print.dart` to include core, models, printers, services and exceptions.
+
+### Fixed
+- Resolved a filename/import issue: `lib/src/printers/wifi_printer.dart.dart` was removed and the implementation now lives in `lib/src/printers/wifi_printer.dart`.
+
+### Notes
+- If you maintain downstream tooling or custom imports, update any references to the old `wifi_printer.dart.dart` path to `wifi_printer.dart`.
+
 ## 1.0.1
 
 ### Added

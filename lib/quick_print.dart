@@ -37,9 +37,36 @@
 /// ```
 library;
 
+// Enums
 export 'src/enums/paper_size.dart';
 export 'src/enums/printer_device_type.dart';
-export 'src/models/printer_model/wifi_printer_model.dart';
+
+// Core
 export 'src/quick_print_base.dart';
+
+// Models
+export 'src/models/printer_model/i_printer_model.dart';
+export 'src/models/printer_model/bluetooth_printer_model.dart';
+export 'src/models/printer_model/decktop_printer_model.dart';
+export 'src/models/printer_model/use_printer_model.dart';
+export 'src/models/printer_model/wifi_printer_model.dart';
+
+// Printers & interfaces
+export 'src/printers/interfaces/i_printer.dart';
+export 'src/printers/bluetooth_printer.dart';
+export 'src/printers/desktop_printer.dart';
+export 'src/printers/mobile_printer.dart';
+export 'src/printers/sunmi_printer.dart';
+export 'src/printers/use_printer.dart';
+export 'src/printers/wifi_printer.dart';
+
+// Services & factories
 export 'src/service/printer_discovery_service.dart';
+export 'src/service/printer_device_factory.dart';
+
+// Exceptions
+export 'src/exceptions/printer_exception.dart';
+export 'src/exceptions/invalid_file_exception.dart';
+export 'src/exceptions/invalid_type_exception.dart';
+export 'src/exceptions/unconnected_device_exception.dart';
 
